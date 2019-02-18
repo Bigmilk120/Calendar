@@ -5,18 +5,27 @@ import javafx.scene.control.Button;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.GridPane;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+
 
 public class Controller {
     @FXML
+    GridPane grid;
+
+    @FXML
     Button applyDate;
     @FXML
-    DatePicker datePicker;
+    DatePicker datePicker = new DatePicker(LocalDate.now());
 
 
     @FXML
     private void handleApplyButton(){
-        String data = datePicker.getEditor().getText();
-        System.out.println(data);
+        Date date = java.sql.Date.valueOf(datePicker.getValue());
+        System.out.println(date);
 
     }
 }

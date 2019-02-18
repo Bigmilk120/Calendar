@@ -10,6 +10,7 @@
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -19,9 +20,10 @@
       <RowConstraints maxHeight="25.0" minHeight="5.0" prefHeight="25.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
    </rowConstraints>
    <children>
       <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="200.0" promptText="Insert Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-      <Button fx:id="applyDate" mnemonicParsing="false" onAction="#handleApplyButton" text="Apply" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+      <Button fx:id="applyDate" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleApplyButton" text="Apply" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
    </children>
 </GridPane>
