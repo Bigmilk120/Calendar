@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Main extends Application {
 
@@ -17,15 +20,16 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
-            Statement stmt = conn.createStatement();
-            JDBCOperations.selectAllFrom(stmt);
-            JDBCOperations.insertInto(stmt, 2, new Date(2019-02-20), "This is temporary note");
-            JDBCOperations.selectAllFrom(stmt);
-            JDBCOperations.deleteFrom(stmt, 2);
-            JDBCOperations.selectAllFrom(stmt);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date =  java.sql.Date.valueOf("2018-02-20");
+
+            JDBCOperations.selectAllFrom();
+            JDBCOperations.insertInto(2, date, "This is temporary note");
+            JDBCOperations.insertInto(3, date, "This is temporary note");
+            JDBCOperations.selectAllFrom();
+            //JDBCOperations.deleteFrom(2);
+            //JDBCOperations.deleteFrom(3);
+            JDBCOperations.selectAllFrom();
         }catch(Exception ex){
             System.out.println(ex);
         }

@@ -29,7 +29,7 @@ public class Controller {
     private void handleApplyButton(){
         try {
             Date date = java.sql.Date.valueOf(datePicker.getValue());
-            noteText.setText(date.toString());
+            noteText.setText(JDBCOperations.selectFrom(date));
             System.out.println(date);
         }catch(Exception ex){
             System.out.println(ex);

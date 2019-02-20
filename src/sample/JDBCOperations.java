@@ -3,11 +3,13 @@ package sample;
 import java.sql.*;
 
 public class JDBCOperations {
-    public static void selectAllFrom(Statement stmt) {
+    public static void selectAllFrom() {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+            Statement stmt = conn.createStatement();
             String strSelect = "select * from note";
-            System.out.println("The SQL query is: " + strSelect);
-            System.out.println();
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -25,8 +27,38 @@ public class JDBCOperations {
             System.out.println(ex);
         }
     }
-    public static void insertInto(Statement stmt, int note_id, Date date, String note_text){
+    public static String selectFrom(Date date) {
+        String result="";
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+            Statement stmt = conn.createStatement();
+            String strSelect = "select * from note where date like '"+date+"'";
+
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.println("The records selected are:");
+            int rowCount = 0;
+            while (rset.next()) {
+                int id = rset.getInt("note_id");
+                date = rset.getDate("date");
+                String note_text = rset.getString("note_text");
+                result+=id + ", " + date + ", " + note_text+"  \n";
+                ++rowCount;
+            }
+
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        return result;
+    }
+    public static void insertInto(int note_id, Date date, String note_text){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+            Statement stmt = conn.createStatement();
             String strSelect = "insert into note values ("+note_id+" , '"+date+"' , '"+note_text+"')";
             System.out.println("The SQL query is: " + strSelect);
             System.out.println();
@@ -37,9 +69,12 @@ public class JDBCOperations {
             System.out.println(ex);
         }
     }
-
-    public static void deleteFrom(Statement stmt, int note_id){
+    public static void deleteFrom(int note_id){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+            Statement stmt = conn.createStatement();
             String strSelect = "delete from note where note_id like "+note_id;
 
             int rset = stmt.executeUpdate(strSelect);
@@ -48,5 +83,4 @@ public class JDBCOperations {
             System.out.println(ex);
         }
     }
-
 }
