@@ -24,8 +24,11 @@ public class Controller {
 
     @FXML
     private void handleApplyButton(){
-        Date date = java.sql.Date.valueOf(datePicker.getValue());
-        System.out.println(date);
-
+        try {
+            Date date = java.sql.Date.valueOf(datePicker.getValue());
+            System.out.println(date);
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
     }
 }
