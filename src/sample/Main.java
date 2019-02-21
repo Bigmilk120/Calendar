@@ -24,11 +24,11 @@ public class Main extends Application {
             Date date =  java.sql.Date.valueOf("2018-02-20");
 
             JDBCOperations.selectAllFrom();
-            JDBCOperations.insertInto(2, date, "This is temporary note");
-            JDBCOperations.insertInto(3, date, "This is temporary note");
+            //JDBCOperations.insertInto(date, "This is temporary note");
+            //JDBCOperations.insertInto(date, "This is temporary note");
             JDBCOperations.selectAllFrom();
-            //JDBCOperations.deleteFrom(2);
-            //JDBCOperations.deleteFrom(3);
+            JDBCOperations.deleteFrom(2);
+            JDBCOperations.deleteFrom(3);
             JDBCOperations.selectAllFrom();
         }catch(Exception ex){
             System.out.println(ex);

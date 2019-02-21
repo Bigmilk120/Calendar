@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -26,11 +27,41 @@ public class Controller {
     TextArea noteText = new TextArea();
 
     @FXML
+    DatePicker insertDate = new DatePicker();
+    @FXML
+    TextField noteAdd = new TextField();
+    @FXML
+    Button insertButton;
+    @FXML
+    TextField deleteId = new TextField();
+    @FXML
+    Button deleteButton;
+
+
+    @FXML
     private void handleApplyButton(){
         try {
             Date date = java.sql.Date.valueOf(datePicker.getValue());
             noteText.setText(JDBCOperations.selectFrom(date));
-            System.out.println(date);
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+    @FXML
+    private void handleInsertButton(){
+        try {
+            Date date = java.sql.Date.valueOf(insertDate.getValue());
+            String noteText=noteAdd.getText();
+            JDBCOperations.insertInto(date,noteText);
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+    @FXML
+    private void handleDeleteButton(){
+        try {
+            int delId = Integer.parseInt(deleteId.getText());
+            JDBCOperations.deleteFrom(delId);
         }catch(Exception ex){
             System.out.println(ex);
         }

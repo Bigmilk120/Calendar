@@ -53,18 +53,14 @@ public class JDBCOperations {
         }
         return result;
     }
-    public static void insertInto(int note_id, Date date, String note_text){
+    public static void insertInto(Date date, String note_text){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
             Statement stmt = conn.createStatement();
-            String strSelect = "insert into note values ("+note_id+" , '"+date+"' , '"+note_text+"')";
+            String strSelect = "insert into note values (0,'"+date+"' , '"+note_text+"')";
             System.out.println("The SQL query is: " + strSelect);
-            System.out.println();
-
-            int rset = stmt.executeUpdate(strSelect);
-            System.out.println(rset + " records inserted.\n");
         }catch(Exception ex){
             System.out.println(ex);
         }

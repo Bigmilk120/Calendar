@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -13,14 +14,21 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
-      <ColumnConstraints />
+      <ColumnConstraints prefWidth="350.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
-      <RowConstraints maxHeight="25.0" minHeight="5.0" prefHeight="25.0" />
+      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" />
+      <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints maxHeight="20.0" minHeight="25.0" prefHeight="20.0" />
+      <RowConstraints maxHeight="20.0" minHeight="25.0" prefHeight="30.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
@@ -30,5 +38,10 @@
       <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="200.0" promptText="Insert Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
       <Button fx:id="applyDate" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleApplyButton" text="Apply" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <TextArea fx:id="noteText" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.rowSpan="2147483647" />
+      <DatePicker id="dateAdd" fx:id="insertDate" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField id="noteAdd" fx:id="noteAdd" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button id="insertButton" fx:id="insertButton" mnemonicParsing="false" onAction="#handleInsertButton" text="Insert note" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField id="deleteId" fx:id="deleteId" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Button id="deleteButton" fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete note" GridPane.columnIndex="1" GridPane.rowIndex="7" />
    </children>
 </GridPane>
