@@ -37,8 +37,6 @@ public class JDBCOperations {
             String strSelect = "select * from note where date like '"+date+"'";
 
             ResultSet rset = stmt.executeQuery(strSelect);
-
-            System.out.println("The records selected are:");
             int rowCount = 0;
             while (rset.next()) {
                 int id = rset.getInt("note_id");
@@ -59,8 +57,8 @@ public class JDBCOperations {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
             Statement stmt = conn.createStatement();
-            String strSelect = "insert into note values (0,'"+date+"' , '"+note_text+"')";
-            System.out.println("The SQL query is: " + strSelect);
+            String strSelect = "insert into note values (1,'"+date+"' , '"+note_text+"')";
+            stmt.executeUpdate(strSelect);
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -74,7 +72,6 @@ public class JDBCOperations {
             String strSelect = "delete from note where note_id like "+note_id;
 
             int rset = stmt.executeUpdate(strSelect);
-            System.out.println(rset + " records inserted.\n");
         }catch(Exception ex){
             System.out.println(ex);
         }

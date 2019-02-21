@@ -20,15 +20,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date =  java.sql.Date.valueOf("2018-02-20");
-
-            JDBCOperations.selectAllFrom();
-            //JDBCOperations.insertInto(date, "This is temporary note");
-            //JDBCOperations.insertInto(date, "This is temporary note");
-            JDBCOperations.selectAllFrom();
-            JDBCOperations.deleteFrom(2);
-            JDBCOperations.deleteFrom(3);
             JDBCOperations.selectAllFrom();
         }catch(Exception ex){
             System.out.println(ex);
