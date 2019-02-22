@@ -25,6 +25,8 @@
       <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
       <RowConstraints maxHeight="20.0" minHeight="25.0" prefHeight="20.0" />
       <RowConstraints maxHeight="20.0" minHeight="25.0" prefHeight="30.0" />
+      <RowConstraints maxHeight="20.0" minHeight="25.0" prefHeight="30.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
@@ -43,5 +45,6 @@
       <Button id="insertButton" fx:id="insertButton" mnemonicParsing="false" onAction="#handleInsertButton" text="Insert note" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextField id="deleteId" fx:id="deleteId" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Button id="deleteButton" fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete note" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Button id="showAll" fx:id="showAll" mnemonicParsing="false" onAction="#handleShowAllButton" text="Show everything" GridPane.columnIndex="1" GridPane.rowIndex="8" />
    </children>
 </GridPane>

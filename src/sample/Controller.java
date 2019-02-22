@@ -36,6 +36,8 @@ public class Controller {
     TextField deleteId = new TextField();
     @FXML
     Button deleteButton;
+    @FXML
+    Button showAll;
 
 
     @FXML
@@ -62,6 +64,14 @@ public class Controller {
         try {
             int delId = Integer.parseInt(deleteId.getText());
             JDBCOperations.deleteFrom(delId);
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+    @FXML
+    private void handleShowAllButton(){
+        try {
+            noteText.setText(JDBCOperations.selectAllFrom());
         }catch(Exception ex){
             System.out.println(ex);
         }
