@@ -35,6 +35,7 @@
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="0.0" />
    </rowConstraints>
    <children>
       <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="200.0" promptText="Insert Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
@@ -46,5 +47,6 @@
       <TextField id="deleteId" fx:id="deleteId" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Button id="deleteButton" fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete note" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <Button id="showAll" fx:id="showAll" mnemonicParsing="false" onAction="#handleShowAllButton" text="Show everything" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button id="temp" fx:id="temp" mnemonicParsing="false" onAction="#handleTemp" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="12" />
    </children>
 </GridPane>
