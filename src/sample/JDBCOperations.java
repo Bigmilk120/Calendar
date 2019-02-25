@@ -10,7 +10,7 @@ public class JDBCOperations {
     public static String selectAllFrom() {
         String res = "";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
@@ -18,7 +18,6 @@ public class JDBCOperations {
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println("The records selected are:");
             int rowCount = 0;
             while (rset.next()) {
                 int id = rset.getInt("note_id");
@@ -27,7 +26,6 @@ public class JDBCOperations {
                 res += id + ", " + date + ", " + note_text+ "\n";
                 ++rowCount;
             }
-            System.out.println("Total number of records = " + rowCount);
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -36,7 +34,7 @@ public class JDBCOperations {
     public static String selectFrom(Date date) {
         String result="";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
@@ -59,7 +57,7 @@ public class JDBCOperations {
     }
     public static void insertInto(Date date, String note_text){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
@@ -72,7 +70,7 @@ public class JDBCOperations {
     }
     public static void deleteFrom(int note_id){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
@@ -86,7 +84,7 @@ public class JDBCOperations {
     public static int giveLastID() {
         int temp_id=0;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
@@ -94,8 +92,6 @@ public class JDBCOperations {
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
-
-            System.out.println("The records selected are:");
             int rowCount = 0;
             while (rset.next()) {
                 int id = rset.getInt("note_id");
