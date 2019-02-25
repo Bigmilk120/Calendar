@@ -77,7 +77,4 @@ public class Controller {
             System.out.println(ex);
         }
     }
-    @FXML
-    private void handleTemp(){
-    }
 }

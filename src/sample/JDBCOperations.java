@@ -3,12 +3,16 @@ package sample;
 import java.sql.*;
 
 public class JDBCOperations {
+
+    static String username = Login.giveUsername();
+    static String password = Login.givePassword();
+
     public static String selectAllFrom() {
         String res = "";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             String strSelect = "select * from note";
 
@@ -34,7 +38,7 @@ public class JDBCOperations {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             String strSelect = "select * from note where date like '"+date+"'";
 
@@ -57,7 +61,7 @@ public class JDBCOperations {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             int id = giveLastID();
             String strSelect = "insert into note values ("+id+",'"+date+"' , '"+note_text+"')";
@@ -70,7 +74,7 @@ public class JDBCOperations {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             String strSelect = "delete from note where note_id like "+note_id;
 
@@ -84,7 +88,7 @@ public class JDBCOperations {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             String strSelect = "select * from note";
 
