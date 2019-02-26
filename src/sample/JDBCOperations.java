@@ -14,7 +14,7 @@ public class JDBCOperations {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
-            String strSelect = "select * from note";
+            String strSelect = "select * from note"+username;
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -38,7 +38,7 @@ public class JDBCOperations {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
-            String strSelect = "select * from note where date like '"+date+"'";
+            String strSelect = "select * from note"+username+" where date like '"+date+"'";
 
             ResultSet rset = stmt.executeQuery(strSelect);
             int rowCount = 0;
@@ -62,7 +62,7 @@ public class JDBCOperations {
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
             int id = giveLastID();
-            String strSelect = "insert into note values ("+id+",'"+date+"' , '"+note_text+"')";
+            String strSelect = "insert into note"+username+" values ("+id+",'"+date+"' , '"+note_text+"')";
             stmt.executeUpdate(strSelect);
         }catch(Exception ex){
             System.out.println(ex);
@@ -74,7 +74,7 @@ public class JDBCOperations {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
-            String strSelect = "delete from note where note_id like "+note_id;
+            String strSelect = "delete from note"+username+" where note_id like "+note_id;
 
             int rset = stmt.executeUpdate(strSelect);
         }catch(Exception ex){
@@ -88,7 +88,7 @@ public class JDBCOperations {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
             Statement stmt = conn.createStatement();
-            String strSelect = "select * from note";
+            String strSelect = "select * from note"+username;
 
             ResultSet rset = stmt.executeQuery(strSelect);
 

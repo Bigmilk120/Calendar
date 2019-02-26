@@ -8,10 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Login {
     @FXML
@@ -62,13 +59,14 @@ public class Login {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", username, password);
+                    "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=True", username, password);
             Statement stmt = conn.createStatement();
-            String strSelect = "select * from note";
+            String strSelect = "select * from note"+username.toLowerCase();
 
-            ResultSet rset = stmt.executeQuery(strSelect);
+            stmt.executeQuery(strSelect);
             return true;
         }catch(Exception ex){
+            System.out.println(ex);
             return false;
         }
     }
