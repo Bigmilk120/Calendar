@@ -17,6 +17,8 @@ public class Login {
     @FXML
     Button loginBtn;
     @FXML
+    Button registerBtn;
+    @FXML
     TextField usernameField;
     @FXML
     PasswordField passwordField;
@@ -40,7 +42,13 @@ public class Login {
     }
     @FXML
     public void handleRegisterBtn(){
-        
+        try {
+            Stage primaryStage = (Stage) registerBtn.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("register.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
     }
 
 
