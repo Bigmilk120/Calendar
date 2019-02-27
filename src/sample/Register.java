@@ -36,6 +36,13 @@ public class Register {
             return;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            String database = "Create database if not exists Notes";
+            Connection connect = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
+            Statement connect_stmt = connect.createStatement();
+            connect_stmt.executeUpdate(database);
+
+
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/Notes?useSSL=false&serverTimezone=UTC", "root", "zaq1@WSX");
             Statement stmt = conn.createStatement();
