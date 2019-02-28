@@ -16,9 +16,6 @@ import java.time.LocalDate;
 
 public class Controller {
     @FXML
-    GridPane grid;
-
-    @FXML
     Button applyDate;
     @FXML
     DatePicker datePicker = new DatePicker(LocalDate.now());
@@ -44,9 +41,7 @@ public class Controller {
         try {
             Date date = java.sql.Date.valueOf(datePicker.getValue());
             noteText.setText(JDBCOperations.selectFrom(date));
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
     @FXML
     private void handleInsertButton(){
@@ -54,25 +49,19 @@ public class Controller {
             Date date = java.sql.Date.valueOf(insertDate.getValue());
             String noteText=noteAdd.getText();
             JDBCOperations.insertInto(date,noteText);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
     @FXML
     private void handleDeleteButton(){
         try {
             int delId = Integer.parseInt(deleteId.getText());
             JDBCOperations.deleteFrom(delId);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
     @FXML
     private void handleShowAllButton(){
         try {
             noteText.setText(JDBCOperations.selectAllFrom());
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
 }

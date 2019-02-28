@@ -8,10 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.print.attribute.standard.JobOriginatingUserName;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Register {
@@ -56,7 +54,7 @@ public class Register {
             Parent newRoot = FXMLLoader.load(getClass().getResource("login.fxml"));
             primaryStage.getScene().setRoot(newRoot);
 
-        }catch(Exception ex) {System.out.println(ex);}
+        }catch(Exception ex) {}
 
     }
     @FXML
@@ -65,6 +63,6 @@ public class Register {
             Stage primaryStage = (Stage) Back.getScene().getWindow();
             Parent newRoot = FXMLLoader.load(getClass().getResource("login.fxml"));
             primaryStage.getScene().setRoot(newRoot);
-        }catch(Exception ex){System.out.println(ex);}
+        }catch(Exception ex){}
     }
 }

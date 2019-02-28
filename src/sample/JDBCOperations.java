@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class JDBCOperations {
 
-    static String username = Login.giveUsername();
-    static String password = Login.givePassword();
+    private static String username = Login.giveUsername();
+    private static String password = Login.givePassword();
 
     public static String selectAllFrom() {
         String res = "";
@@ -22,11 +22,9 @@ public class JDBCOperations {
                 int id = rset.getInt("note_id");
                 Date date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                res += "ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
+                res.concat("ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n");
             }
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
         return res;
     }
     public static String selectFrom(Date date) {
@@ -44,13 +42,11 @@ public class JDBCOperations {
                 int id = rset.getInt("note_id");
                 date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                result+="ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
+                result.concat("ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n");
                 ++rowCount;
             }
 
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
         return result;
     }
     public static void insertInto(Date date, String note_text){
@@ -62,9 +58,7 @@ public class JDBCOperations {
             int id = giveLastID();
             String strSelect = "insert into note"+username+" values ("+id+",'"+date+"' , '"+note_text+"')";
             stmt.executeUpdate(strSelect);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
     public static void deleteFrom(int note_id){
         try {
@@ -74,12 +68,10 @@ public class JDBCOperations {
             Statement stmt = conn.createStatement();
             String strSelect = "delete from note"+username+" where note_id like "+note_id;
 
-            int rset = stmt.executeUpdate(strSelect);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+            stmt.executeUpdate(strSelect);
+        }catch(Exception ex){}
     }
-    public static int giveLastID() {
+    private static int giveLastID() {
         int temp_id=0;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -97,9 +89,7 @@ public class JDBCOperations {
                     temp_id=id;
                 ++rowCount;
             }
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
         temp_id++;
         return temp_id;
     }

@@ -33,9 +33,7 @@ public class Login {
                 Parent newRoot = FXMLLoader.load(getClass().getResource("sample.fxml"));
                 primaryStage.getScene().setRoot(newRoot);
             }
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
     @FXML
     public void handleRegisterBtn(){
@@ -43,9 +41,7 @@ public class Login {
             Stage primaryStage = (Stage) registerBtn.getScene().getWindow();
             Parent newRoot = FXMLLoader.load(getClass().getResource("register.fxml"));
             primaryStage.getScene().setRoot(newRoot);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        }catch(Exception ex){}
     }
 
 
@@ -55,7 +51,7 @@ public class Login {
     public static String givePassword(){
         return password;
     }
-    public boolean isConnectionOK(){
+    private boolean isConnectionOK(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
@@ -66,7 +62,6 @@ public class Login {
             stmt.executeQuery(strSelect);
             return true;
         }catch(Exception ex){
-            System.out.println(ex);
             return false;
         }
     }
