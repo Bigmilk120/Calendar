@@ -22,9 +22,11 @@ public class JDBCOperations {
                 int id = rset.getInt("note_id");
                 Date date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                res.concat("ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n");
+                res+="ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
             }
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
         return res;
     }
     public static String selectFrom(Date date) {
@@ -42,11 +44,13 @@ public class JDBCOperations {
                 int id = rset.getInt("note_id");
                 date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                result.concat("ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n");
+                result+="ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
                 ++rowCount;
             }
 
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
         return result;
     }
     public static void insertInto(Date date, String note_text){
@@ -58,7 +62,9 @@ public class JDBCOperations {
             int id = giveLastID();
             String strSelect = "insert into note"+username+" values ("+id+",'"+date+"' , '"+note_text+"')";
             stmt.executeUpdate(strSelect);
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
     }
     public static void deleteFrom(int note_id){
         try {
@@ -69,7 +75,9 @@ public class JDBCOperations {
             String strSelect = "delete from note"+username+" where note_id like "+note_id;
 
             stmt.executeUpdate(strSelect);
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
     }
     private static int giveLastID() {
         int temp_id=0;
@@ -89,7 +97,9 @@ public class JDBCOperations {
                     temp_id=id;
                 ++rowCount;
             }
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
         temp_id++;
         return temp_id;
     }

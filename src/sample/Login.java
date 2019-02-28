@@ -3,9 +3,12 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -33,7 +36,8 @@ public class Login {
                 Parent newRoot = FXMLLoader.load(getClass().getResource("sample.fxml"));
                 primaryStage.getScene().setRoot(newRoot);
             }
-        }catch(Exception ex){}
+        }catch(Exception ex){
+        }
     }
     @FXML
     public void handleRegisterBtn(){
@@ -41,7 +45,9 @@ public class Login {
             Stage primaryStage = (Stage) registerBtn.getScene().getWindow();
             Parent newRoot = FXMLLoader.load(getClass().getResource("register.fxml"));
             primaryStage.getScene().setRoot(newRoot);
-        }catch(Exception ex){}
+        }catch(Exception ex){
+            Universal.showPopup();
+        }
     }
 
 
@@ -62,6 +68,7 @@ public class Login {
             stmt.executeQuery(strSelect);
             return true;
         }catch(Exception ex){
+            Universal.showPopup();
             return false;
         }
     }
