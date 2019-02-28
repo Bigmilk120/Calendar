@@ -52,7 +52,9 @@ public class Register {
             stmt.executeUpdate(query);
             query = "create table if not exists note"+username+" (note_id INT AUTO_INCREMENT, date Date, note_text VARCHAR(255), UNIQUE KEY (note_id))";
             stmt.executeUpdate(query);
-
+            Stage primaryStage = (Stage) Back.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("login.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
 
         }catch(Exception ex) {System.out.println(ex);}
 

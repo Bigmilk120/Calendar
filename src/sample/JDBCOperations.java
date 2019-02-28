@@ -18,13 +18,11 @@ public class JDBCOperations {
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            int rowCount = 0;
             while (rset.next()) {
                 int id = rset.getInt("note_id");
                 Date date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                res += id + ", " + date + ", " + note_text+ "\n";
-                ++rowCount;
+                res += "ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
             }
         }catch(Exception ex){
             System.out.println(ex);
@@ -46,7 +44,7 @@ public class JDBCOperations {
                 int id = rset.getInt("note_id");
                 date = rset.getDate("date");
                 String note_text = rset.getString("note_text");
-                result+=id + ", " + date + ", " + note_text+"  \n";
+                result+="ID: "+id + "\nDate: " + date + "\nNote: " + note_text+ "\n\n";
                 ++rowCount;
             }
 
